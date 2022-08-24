@@ -96,6 +96,7 @@ exports.getOnePost = (req, res, next) => {
 
 exports.getAllPost = (req, res, next) => {
   Post.find()
+    .sort({ _id: -1 })
     .then((post) => {
       res.status(200).json(post);
     })

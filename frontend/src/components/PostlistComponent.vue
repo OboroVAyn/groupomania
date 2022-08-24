@@ -92,7 +92,6 @@ export default {
         })
         .then((response) => {
           this.posts = response.data;
-          console.log(this.posts);
         })
         .catch(() => {
           this.errorMsg = "Error retrieving data";
