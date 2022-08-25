@@ -41,7 +41,7 @@ export default {
 }
 .authform {
   border: 2px solid black;
-  padding-bottom: 1%;
+  padding-bottom: 2%;
   margin: 2em auto;
   max-width: 750px;
 }
