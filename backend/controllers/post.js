@@ -3,6 +3,8 @@ const fs = require("fs");
 const { post } = require("../app");
 
 exports.createPost = (req, res, next) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
   const postText = req.body.postText;
   const userId = req.body.userId;
   let image = null;
@@ -10,6 +12,8 @@ exports.createPost = (req, res, next) => {
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
   }
   const post = new Post({
+    firstName: firstName,
+    lastName: lastName,
     userId: userId,
     postText: postText,
     imageUrl: image,
