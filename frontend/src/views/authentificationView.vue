@@ -45,4 +45,14 @@ export default {
   margin: 2em auto;
   max-width: 750px;
 }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  align-items: center;
+  color: #fd2d01;
+}
+button {
+  margin-top: 2%;
+}
 </style>
