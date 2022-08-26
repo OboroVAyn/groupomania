@@ -1,8 +1,5 @@
 <template>
-  <form
-    v-if="post.userId === this.getUserIdConnected() || isAdmin"
-    @submit.prevent="putForm"
-  >
+  <form @submit.prevent="putForm">
     <div class="form-group">
       <label for="postText">Post Text</label>
       <textarea
@@ -34,7 +31,6 @@ export default {
     return {
       posts: [],
       errorMsg: "",
-      isAdmin: false,
     };
   },
   methods: {

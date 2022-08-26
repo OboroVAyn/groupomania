@@ -22,15 +22,53 @@ import axios from "axios";
 
 export default {
   name: "postForm",
-
+  created() {
+    this.getUser();
+  },
   data() {
     return {
       postText: null,
       postImg: null,
       errorMsg: "",
+      lastName: "",
+      firstName: "",
     };
   },
   methods: {
+    //method to obtain user info
+    getUser() {
+      const userId = this.getUserIdConnected();
+      const token = this.getUserTokenConnected();
+      axios
+        .get("http://localhost:3000/api/auth/" + userId, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          this.firstName = data.firstName;
+          this.lastName = data.lastName;
+        })
+        .catch(() => {
+          this.errorMsg = "Error retrieving data";
+        });
+    },
+    //method to return localstorage
+    getUserConnected() {
+      return JSON.parse(localStorage.getItem("user"));
+    },
+    //method to return userId from localstorage
+    getUserIdConnected() {
+      const user = this.getUserConnected();
+      return user.userId;
+    },
+    //method to return token from localstorage
+    getUserTokenConnected() {
+      const token = this.getUserConnected();
+      return token.token;
+    },
     //method to get the correct file
     uploadFile(event) {
       if (event.target.files) {
@@ -44,6 +82,8 @@ export default {
       data.append("userId", user.userId);
       data.append("postText", this.postText);
       data.append("image", this.postImg);
+      data.append("lastName", this.lastName);
+      data.append("firstName", this.firstName);
       if (this.postText <= null) {
         alert("Veuillez remplir le champ");
       } else {

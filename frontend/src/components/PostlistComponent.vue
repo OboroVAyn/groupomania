@@ -9,6 +9,7 @@
         :key="post._id"
         @click="getOnePost(post._id)"
       >
+        <div>by: {{ post.lastName }} {{ post.firstName }}</div>
         <img
           alt="Daily's Post"
           :src="post.imageUrl"
@@ -49,6 +50,7 @@ export default {
     };
   },
   methods: {
+    //method to obtain user info
     getUser() {
       const userId = this.getUserIdConnected();
       const token = this.getUserTokenConnected();
@@ -60,7 +62,7 @@ export default {
         })
         .then((response) => {
           const data = response.data;
-
+          console.log(data);
           this.isAdmin = data.isAdmin;
         })
         .catch(() => {
