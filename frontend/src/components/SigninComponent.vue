@@ -1,12 +1,16 @@
 <template>
   <form class="authform" @submit.prevent="signin">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" v-model="formData.email" />
+      <div class="input-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" v-model="formData.email" />
+      </div>
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" v-model="formData.password" />
+      <div class="input-form">
+        <label for="password">Password</label>
+        <input type="password" id="password" v-model="formData.password" />
+      </div>
     </div>
     <button>SIGN IN</button>
     <p v-if="errorMsg">{{ this.errorMsg }}</p>

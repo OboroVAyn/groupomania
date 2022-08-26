@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style lang="scss">
+.logo {
+  background-color: #4e5166;
+  padding-top: 4px;
+}
 .nav {
   display: flex;
   justify-content: space-evenly;
@@ -63,8 +67,9 @@ export default {
   .post-list-item {
     display: flex;
     text-align: center;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
     width: 220px;
 
     img {
@@ -94,9 +99,10 @@ export default {
   }
   .post-list-item {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     text-align: center;
     flex-wrap: wrap;
+    flex-direction: column;
     width: 220px;
     img {
       width: 195px;

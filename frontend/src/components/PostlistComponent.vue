@@ -159,16 +159,20 @@ export default {
   color: #ffd7d7;
 }
 .post-list {
+  padding-top: 1%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
+  background-color: #4e5166;
 }
 
 .post-list-item {
   text-align: center;
   width: 220px;
+  margin-bottom: 4%;
+  background-color: white;
   img {
     max-width: 200px;
     max-height: 250px;

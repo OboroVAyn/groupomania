@@ -1,48 +1,56 @@
 <template>
   <form class="authform" @submit.prevent="signup">
     <div class="form-group">
-      <label for="lastname">Lastname</label>
-      <input
-        type="text"
-        id="lastname"
-        @input="regexLastName()"
-        v-model="formData.lastName"
-        required
-      />
-      <p v-if="this.errorLastName">Le champ n'est pas conforme</p>
+      <div class="input-form">
+        <label for="lastname">Lastname</label>
+        <input
+          type="text"
+          id="lastname"
+          @input="regexLastName()"
+          v-model="formData.lastName"
+          required
+        />
+        <p v-if="this.errorLastName">Le champ n'est pas conforme</p>
+      </div>
     </div>
     <div class="form-group">
-      <label for="firstname">Firstname</label>
-      <input
-        type="text"
-        id="text"
-        @input="regexFirstName()"
-        v-model="formData.firstName"
-        required
-      />
+      <div class="input-form">
+        <label for="firstname">Firstname</label>
+        <input
+          type="text"
+          id="text"
+          @input="regexFirstName()"
+          v-model="formData.firstName"
+          required
+        />
+      </div>
+      <p v-if="this.errorFirstName">Le champ n'est pas conforme</p>
     </div>
-    <p v-if="this.errorFirstName">Le champ n'est pas conforme</p>
     <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        @input="regexEmail()"
-        v-model="formData.email"
-        required
-      />
+      <div class="input-form">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          @input="regexEmail()"
+          v-model="formData.email"
+          required
+        />
+      </div>
+      <p v-if="this.errorEmail">Le champ n'est pas conforme</p>
     </div>
-    <p v-if="this.errorEmail">Le champ n'est pas conforme</p>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        @input="regexPassword()"
-        v-model="formData.password"
-        required
-      />
-      <p v-if="this.errorPassword">Le champ n'est pas conforme</p>
+      <div class="input-form">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          @input="regexPassword()"
+          v-model="formData.password"
+          required
+        />
+        <p v-if="this.errorPassword">Le champ n'est pas conforme</p>
+      </div>
     </div>
     <button>SIGN UP</button>
   </form>

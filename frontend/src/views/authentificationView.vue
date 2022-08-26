@@ -52,6 +52,11 @@ export default {
   align-items: center;
   color: #fd2d01;
 }
+.input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 button {
   margin-top: 2%;
 }
