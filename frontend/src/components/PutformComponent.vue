@@ -109,6 +109,9 @@ export default {
 </script>
 
 <style>
+input[type="file"] {
+  color: rgba(0, 0, 0, 0);
+}
 .imagePreview {
   max-width: 200px;
   max-height: 250px;
