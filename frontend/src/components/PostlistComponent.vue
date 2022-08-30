@@ -62,7 +62,7 @@ export default {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
+
           this.isAdmin = data.isAdmin;
         })
         .catch(() => {

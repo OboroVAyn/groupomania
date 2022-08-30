@@ -28,23 +28,20 @@ exports.createPost = (req, res, next) => {
 
 exports.modifyPost = (req, res, next) => {
   const postText = req.body.postText;
-  const userId = req.body.userId;
   let image = req.body.imageUrl;
+
   if (req.file) {
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
   }
   const postObject = req.file
     ? {
-        userId: userId,
         postText: postText,
         imageUrl: image,
       }
     : {
-        userId: userId,
         postText: postText,
         imageUrl: image,
       };
-
   Post.findOne({ _id: req.params.id })
     .then(() => {
       Post.updateOne(

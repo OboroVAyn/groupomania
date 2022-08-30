@@ -11,6 +11,12 @@
     </div>
     <div class="form-group">
       <input type="file" name="file" @change="uploadFile" />
+      <img
+        v-show="postImg != null"
+        alt="imagePreview"
+        :src="this.imagePreview"
+      />
+      <div @click="removing">DELETE</div>
     </div>
     <button>SUBMIT</button>
     <p v-if="errorMsg">{{ this.errorMsg }}</p>
@@ -32,6 +38,7 @@ export default {
       errorMsg: "",
       lastName: "",
       firstName: "",
+      imagePreview: null,
     };
   },
   methods: {
@@ -47,7 +54,6 @@ export default {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
           this.firstName = data.firstName;
           this.lastName = data.lastName;
         })
@@ -73,7 +79,15 @@ export default {
     uploadFile(event) {
       if (event.target.files) {
         this.postImg = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(this.postImg);
+        reader.onload = () => {
+          this.imagePreview = reader.result;
+        };
       }
+    },
+    removing() {
+      return (this.postImg = null);
     },
     //method to create a new post with axios.post using data
     postform() {
