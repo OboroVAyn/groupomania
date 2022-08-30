@@ -173,10 +173,7 @@ export default {
   width: 220px;
   margin-bottom: 4%;
   background-color: white;
-  img {
-    max-width: 200px;
-    max-height: 250px;
-  }
+
   h4 {
     margin: 0;
     font-weight: 500;
@@ -189,6 +186,102 @@ export default {
   &:hover {
     transform: scale(1.05);
     box-shadow: 1px 1px 20px rgba(120, 120, 120, 0.3);
+  }
+}
+@media screen and (min-width: 992px) {
+  img {
+    width: 20%;
+  }
+  #postText {
+    width: 800px;
+    height: 300px;
+  }
+  .post-list-item {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 420px;
+
+    img {
+      width: 400px;
+      height: 200px;
+      object-fit: contain;
+    }
+    h4 {
+      margin: 0;
+      font-weight: 500;
+    }
+    p {
+      margin: 0;
+    }
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 1px 1px 20px rgba(120, 120, 120, 0.3);
+    }
+  }
+}
+@media screen and (max-width: 992px) and (min-width: 590px) {
+  #postText {
+    width: 580px;
+    height: 250px;
+  }
+  .post-list-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 320px;
+    img {
+      width: 300px;
+      height: 150px;
+      object-fit: contain;
+    }
+    h4 {
+      margin: 0;
+      font-weight: 500;
+    }
+    p {
+      margin: 0;
+    }
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 1px 1px 20px rgba(120, 120, 120, 0.3);
+    }
+  }
+}
+@media screen and (max-width: 590px) {
+  .post-list-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 220px;
+    img {
+      width: 195px;
+      height: 150px;
+      object-fit: contain;
+    }
+    h4 {
+      margin: 0;
+      font-weight: 500;
+    }
+    p {
+      margin: 0;
+    }
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 1px 1px 20px rgba(120, 120, 120, 0.3);
+    }
   }
 }
 button {

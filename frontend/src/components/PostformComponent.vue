@@ -12,11 +12,12 @@
     <div class="form-group">
       <input type="file" name="file" @change="uploadFile" />
       <img
+        class="imagePreview"
         v-show="postImg != null"
         alt="imagePreview"
         :src="this.imagePreview"
       />
-      <div @click="removing">DELETE</div>
+      <div v-show="postImg != null" @click="removing">DELETE</div>
     </div>
     <button>SUBMIT</button>
     <p v-if="errorMsg">{{ this.errorMsg }}</p>
@@ -99,7 +100,7 @@ export default {
       data.append("lastName", this.lastName);
       data.append("firstName", this.firstName);
       if (this.postText <= null) {
-        alert("Veuillez remplir le champ");
+        alert("Veuillez remplir le champ postText");
       } else {
         axios
           .post("http://localhost:3000/api/post", data, {
@@ -120,3 +121,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.imagePreview {
+  max-width: 200px;
+  max-height: 250px;
+}
+</style>

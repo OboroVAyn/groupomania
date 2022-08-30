@@ -28,7 +28,7 @@ exports.createPost = (req, res, next) => {
 
 exports.modifyPost = (req, res, next) => {
   const postText = req.body.postText;
-  let image = req.body.imageUrl;
+  let image = req.body.image;
 
   if (req.file) {
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
@@ -42,6 +42,9 @@ exports.modifyPost = (req, res, next) => {
         postText: postText,
         imageUrl: image,
       };
+  if (postObject.imageUrl == "null") {
+    postObject.imageUrl = null;
+  }
   Post.findOne({ _id: req.params.id })
     .then(() => {
       Post.updateOne(

@@ -13,12 +13,13 @@
     <div class="form-group">
       <input type="file" name="file" @change="uploadFile" />
       <img
+        class="imagePreview"
         v-show="this.posts.imageUrl != null"
         alt="imagePreview"
         :src="previewImage"
       />
     </div>
-    <div @click="removing">DELETE</div>
+    <div v-show="this.posts.imageUrl != null" @click="removing">DELETE</div>
     <button>SUBMIT</button>
     <p v-if="errorMsg">{{ this.errorMsg }}</p>
   </form>
@@ -74,7 +75,6 @@ export default {
       }
     },
     removing() {
-      console.log(this.posts.imageUrl);
       this.posts.imageUrl = null;
       this.previewImage = null;
     },
@@ -107,3 +107,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.imagePreview {
+  max-width: 200px;
+  max-height: 250px;
+}
+</style>
