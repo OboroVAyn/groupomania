@@ -12,8 +12,10 @@
         <input type="password" id="password" v-model="formData.password" />
       </div>
     </div>
-    <button>SIGN IN</button>
-    <p v-if="errorMsg">{{ this.errorMsg }}</p>
+    <div class="form-group">
+      <button>SIGN IN</button>
+      <p v-if="errorMsg">{{ this.errorMsg }}</p>
+    </div>
   </form>
 </template>
 

@@ -15,10 +15,5 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    switchTab() {
-      this.activeTab = "singlePost";
-    },
-  },
 };
 </script>

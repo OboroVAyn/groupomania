@@ -10,6 +10,7 @@
       ></textarea>
     </div>
     <div class="form-group">
+      <label class="hidden-label" for="file">File</label>
       <input type="file" name="file" @change="uploadFile" />
       <img
         class="imagePreview"
@@ -126,5 +127,8 @@ export default {
 .imagePreview {
   max-width: 200px;
   max-height: 250px;
+}
+.hidden-label {
+  display: none;
 }
 </style>

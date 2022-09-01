@@ -11,6 +11,7 @@
       </textarea>
     </div>
     <div class="form-group">
+      <label class="hidden-label" for="file">File</label>
       <input type="file" name="file" @change="uploadFile" />
       <img
         class="imagePreview"

@@ -52,7 +52,9 @@
         <p v-if="this.errorPassword">Le champ n'est pas conforme</p>
       </div>
     </div>
-    <button>SIGN UP</button>
+    <div class="form-group">
+      <button>SIGN UP</button>
+    </div>
   </form>
 </template>
 

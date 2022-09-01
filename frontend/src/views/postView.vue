@@ -15,14 +15,12 @@
 <script>
 import postList from "../components/PostlistComponent.vue";
 import postForm from "../components/PostformComponent.vue";
-import putForm from "../components/PutformComponent.vue";
 
 export default {
   name: "App",
   components: {
     postList,
     postForm,
-    putForm,
   },
   data() {
     return { activeTab: "postList", userId: "" };

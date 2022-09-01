@@ -60,4 +60,28 @@ export default {
 button {
   margin-top: 2%;
 }
+@media screen and (max-width: 590px) {
+  .authform {
+    border: 2px solid black;
+    padding-bottom: 2%;
+    margin: 2em auto;
+    max-width: 750px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8%;
+    align-items: center;
+    color: #fd2d01;
+  }
+  .input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  button {
+    margin-top: 2%;
+    margin-bottom: 4%;
+  }
+}
 </style>
