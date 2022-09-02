@@ -1,5 +1,7 @@
 # groupomania
 
+Hello, here you'll find my project, I go by OboroVayn
+
 Require:
 nodejs and vuejs installed and with their latest version
 
