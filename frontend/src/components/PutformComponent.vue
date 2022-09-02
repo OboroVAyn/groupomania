@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="putForm">
+    <div @click="returnHome()" class="back-putform">BACK</div>
     <div class="form-group">
       <label for="postText">Post Text</label>
       <textarea
@@ -42,6 +43,9 @@ export default {
     };
   },
   methods: {
+    returnHome() {
+      this.$router.push({ path: "/post" });
+    },
     // We return id from postlistcomponent in order to charge the page with the correct parameter
     chargePostId() {
       return this.$route.params.id;

@@ -72,7 +72,6 @@ button {
     flex-direction: column;
     padding-top: 8%;
     align-items: center;
-    color: #fd2d01;
   }
   .input-form {
     display: flex;
