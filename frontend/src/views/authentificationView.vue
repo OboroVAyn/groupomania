@@ -50,7 +50,6 @@ export default {
   flex-direction: column;
   padding-top: 2%;
   align-items: center;
-  color: #fd2d01;
 }
 .input-form {
   display: flex;

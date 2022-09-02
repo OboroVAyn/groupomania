@@ -14,6 +14,7 @@
     <div class="form-group">
       <label class="hidden-label" for="file">File</label>
       <input type="file" name="file" @change="uploadFile" />
+
       <img
         class="imagePreview"
         v-show="this.posts.imageUrl != null"
@@ -120,5 +121,13 @@ input[type="file"] {
 .imagePreview {
   max-width: 200px;
   max-height: 250px;
+}
+.back-putform {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+  border: 1px solid black;
+  background-color: #ffd7d7;
 }
 </style>
