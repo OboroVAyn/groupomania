@@ -1,6 +1,7 @@
 const Post = require("../models/Post");
 const fs = require("fs");
 const { post } = require("../app");
+const User = require("../models/User");
 
 exports.createPost = (req, res, next) => {
   const firstName = req.body.firstName;
@@ -29,7 +30,6 @@ exports.createPost = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
   const postText = req.body.postText;
   let image = req.body.image;
-
   if (req.file) {
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
   }
@@ -46,17 +46,23 @@ exports.modifyPost = (req, res, next) => {
     postObject.imageUrl = null;
   }
   Post.findOne({ _id: req.params.id })
-    .then(() => {
-      Post.updateOne(
-        { _id: req.params.id },
-        { ...postObject, _id: req.params.id }
-      )
-        .then(() =>
-          res
-            .status(200)
-            .json({ message: "Modification de post prise en compte" })
-        )
-        .catch((error) => res.status(401).json({ error }));
+    .then((post) => {
+      User.findOne({ _id: req.auth.userId }).then((result) => {
+        if (post.userId != req.auth.userId && !result.isAdmin) {
+          res.status(401).json({ message: "Non autorisé" });
+        } else {
+          Post.updateOne(
+            { _id: req.params.id },
+            { ...postObject, _id: req.params.id }
+          )
+            .then(() =>
+              res
+                .status(200)
+                .json({ message: "Modification de post prise en compte" })
+            )
+            .catch((error) => res.status(401).json({ error }));
+        }
+      });
     })
     .catch((error) => res.status(400).json({ error }));
 };
@@ -64,22 +70,32 @@ exports.modifyPost = (req, res, next) => {
 exports.deletePost = (req, res, next) => {
   Post.findOne({ _id: req.params.id })
     .then((post) => {
-      if (post.imageUrl != null) {
-        const filename = post.imageUrl.split("/images/")[1];
-        fs.unlink(`images/${filename}`, () => {
-          Post.deleteOne({ _id: req.params.id })
-            .then(() => {
-              res.status(200).json({ message: "Suppression de post effectué" });
-            })
-            .catch((error) => res.status(401).json({ error }));
-        });
-      } else {
-        Post.deleteOne({ _id: req.params.id })
-          .then(() => {
-            res.status(200).json({ message: "Suppression de post effectué" });
-          })
-          .catch((error) => res.status(401).json({ error }));
-      }
+      User.findOne({ _id: req.auth.userId }).then((result) => {
+        if (post.userId != req.auth.userId && !result.isAdmin) {
+          res.status(401).json({ message: "Non autorisé" });
+        } else {
+          if (post.imageUrl != null) {
+            const filename = post.imageUrl.split("/images/")[1];
+            fs.unlink(`images/${filename}`, () => {
+              Post.deleteOne({ _id: req.params.id })
+                .then(() => {
+                  res
+                    .status(200)
+                    .json({ message: "Suppression de post effectué" });
+                })
+                .catch((error) => res.status(401).json({ error }));
+            });
+          } else {
+            Post.deleteOne({ _id: req.params.id })
+              .then(() => {
+                res
+                  .status(200)
+                  .json({ message: "Suppression de post effectué" });
+              })
+              .catch((error) => res.status(401).json({ error }));
+          }
+        }
+      });
     })
     .catch((error) => req.status(500).json({ error }));
 };
