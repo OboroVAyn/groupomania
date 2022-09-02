@@ -1,5 +1,9 @@
 <template>
-  <img alt="Groupomania logo" src="../assets/Groupomania1.png" />
+  <img
+    fetchpriority="high"
+    alt="Groupomania logo"
+    src="../assets/Groupomania1.png"
+  />
 </template>
 
 <script>
